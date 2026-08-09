@@ -1,0 +1,24 @@
+{
+	"name": "tmc_test_back",
+	"version": "0.1.0",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development tsx ./src/index.ts",
+		"build": "tsc",
+		"prod": "cross-env NODE_ENV=production node ./dist/index.js"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/node": "^26.1.2",
+		"cross-env": "^10.1.0",
+		"tsx": "^4.23.7",
+		"typescript": "^7.0.2"
+	},
+	"dependencies": {
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1"
+	}
+}

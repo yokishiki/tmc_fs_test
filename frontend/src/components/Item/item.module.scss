@@ -1,0 +1,35 @@
+.item {
+	height: 100px;
+}
+
+.content {
+	height: 90px;
+	padding: 8px 12px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	gap: 8px;
+
+	border: 1px solid rgb(152, 14, 216);
+	border-radius: 2px;
+	background-color: rgb(221, 200, 233);
+
+	&.temp {
+		opacity: 0.8;
+	}
+}
+
+.label {
+	font-family: sans-serif;
+	font-size: 12px;
+	line-height: 16px;
+	color: rgb(146, 140, 140);
+}
+
+.text {
+	font-family: serif;
+	font-size: 16px;
+	line-height: 22px;
+	color: rgb(18, 18, 18)
+}

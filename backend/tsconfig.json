@@ -1,0 +1,62 @@
+{
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"module": "nodenext",
+		"target": "esnext",
+		"moduleResolution": "nodenext",
+		"lib": [
+			"esnext"
+		],
+		"types": [
+			"node"
+		],
+		"allowJs": false,
+		"checkJs": false,
+		
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"removeComments": true,
+		
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"alwaysStrict": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		
+		"strict": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+		"noUncheckedSideEffectImports": true,
+		"moduleDetection": "force",
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"strictPropertyInitialization": false
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifiers": true,
+		"experimentalSpecifierResolution": "node"
+	}
+}

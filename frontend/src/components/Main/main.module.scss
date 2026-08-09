@@ -1,0 +1,32 @@
+.main {
+	display: flex;
+	gap: 12px;
+
+	>div {
+		width: calc((100% - 12px) / 2);
+		flex-basis: calc((100% - 12px) / 2);
+	}
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.add {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.value {
+	display: flex;
+	gap: 4px;
+}
+
+.controls {
+	display: flex;
+	justify-content: stretch;
+	gap: 4px;
+}
