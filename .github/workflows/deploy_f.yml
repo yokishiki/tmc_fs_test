@@ -35,7 +35,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_URL: ${{ vars.VITE_HOST }}
+          VITE_HOST: ${{ vars.VITE_HOST }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
