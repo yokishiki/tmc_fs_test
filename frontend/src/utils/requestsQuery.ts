@@ -1,3 +1,5 @@
+import { uuid } from "uuidv4";
+
 import { sleep } from ".";
 import { batchCreate, batchGet, batchUpdate } from "../api";
 
@@ -10,7 +12,7 @@ type ItemSelect = { type: "select", requestId: string, data: { itemId: Item["id"
 type ItemMove = { type: "move", requestId: string, data: { itemId: Item["id"], nextItemId: Item["id"] | null; }; };
 
 export type HandleGetResponseFn = (res: GetItemsResponse & { type: "selected" | "unselected", append?: boolean; }) => void;
-export type HandleCreateResponseFn = (res: CreateItemResponse | { id: Item["id"], err: string }) => void;
+export type HandleCreateResponseFn = (res: CreateItemResponse | { id: Item["id"], err: string; }) => void;
 
 class RequestsQuery {
 	private handleGetResponse: HandleGetResponseFn | null = null;
@@ -42,7 +44,7 @@ class RequestsQuery {
 							else {
 								const request = toCreate.find(req => req.requestId === result.requestId);
 								if(request)
-									this.handleCreateResponse?.({id: request.data.id, err: result.data.err});
+									this.handleCreateResponse?.({ id: request.data.id, err: result.data.err });
 							}
 						}
 					});
@@ -113,7 +115,7 @@ class RequestsQuery {
 		const { type, ...options } = params;
 		const existingIndex = this.gets.findIndex(request => request.type === type);
 		if(existingIndex === -1)
-			this.gets.push({ type, requestId: crypto.randomUUID(), data: options });
+			this.gets.push({ type, requestId: uuid(), data: options });
 		else
 			this.gets[existingIndex].data = options;
 	}
@@ -122,7 +124,7 @@ class RequestsQuery {
 		const itemNormalizedId = String(params.item.id).toLowerCase();
 		const existingIndex = this.creates.findIndex(itemToCreate => String(itemToCreate.data.id).toLowerCase() === itemNormalizedId);
 		if(existingIndex === -1)
-			this.creates.push({ requestId: crypto.randomUUID(), data: params.item });
+			this.creates.push({ requestId: uuid(), data: params.item });
 	}
 
 	public addMove(params: { itemId: Item["id"], nextItemId: Item["id"] | null; }) {
@@ -131,7 +133,7 @@ class RequestsQuery {
 			if(lastUpdate.type === "move" && lastUpdate.data.itemId === params.itemId && lastUpdate.data.nextItemId === params.nextItemId)
 				return;
 		}
-		this.updates.push({ type: "move", requestId: crypto.randomUUID(), data: params });
+		this.updates.push({ type: "move", requestId: uuid(), data: params });
 	}
 
 	public addSelect(params: { itemId: Item["id"]; }) {
@@ -140,7 +142,7 @@ class RequestsQuery {
 			if(lastUpdate.type === "select" && lastUpdate.data.itemId === params.itemId)
 				return;
 		}
-		this.updates.push({ type: "select", requestId: crypto.randomUUID(), data: params });
+		this.updates.push({ type: "select", requestId: uuid(), data: params });
 	}
 
 	public bindHandleResponse(fnGet: HandleGetResponseFn, fnCreate: HandleCreateResponseFn) {
