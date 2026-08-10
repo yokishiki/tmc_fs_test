@@ -16,10 +16,11 @@ import errorHandler from "./middlewares/errorHandler.ts";
 if(!process.env.PORT)
 	throw new Error("No port");
 const port = +process.env.PORT;
+const origin = process.env.CORS;
 
 const app = express();
 
-app.use(cors());
+app.use(cors(origin ? { origin } : void 0));
 app.use(express.json());
 app.use(express.urlencoded());
 
